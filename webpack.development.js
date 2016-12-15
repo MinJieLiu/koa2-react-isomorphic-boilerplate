@@ -1,13 +1,14 @@
-process.env.NODE_ENV = 'development'
+process.env.NODE_ENV = 'development';
 
-var webpack = require('webpack')
-var path = require('path')
-var rucksack = require('rucksack-css')
-var autoprefixer = require('autoprefixer')
-var includes = [
+const path = require('path');
+const webpack = require('webpack');
+const rucksack = require('rucksack-css');
+const autoprefixer = require('autoprefixer');
+
+const includes = [
   path.resolve(__dirname, 'app'),
-  path.resolve(__dirname, 'platforms')
-]
+  path.resolve(__dirname, 'platforms'),
+];
 
 module.exports = {
   name: 'backend dev hot middlware',
@@ -15,21 +16,22 @@ module.exports = {
     // For old browsers
     'eventsource-polyfill',
     'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
-    './platforms/browser/index.js'
+    './platforms/browser/index.js',
   ],
+
   output: {
     path: path.join(__dirname, '/public/static'),
     filename: '[name].js',
     chunkFilename: '[id].chunk.js',
-    publicPath: '/build/'
+    publicPath: '/build/',
   },
   resolve: {
     modulesDirectories: ['node_modules', path.join(__dirname, '/node_modules')],
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx'],
   },
 
   resolveLoader: {
-    modulesDirectories: ['node_modules', path.join(__dirname, '/node_modules')]
+    modulesDirectories: ['node_modules', path.join(__dirname, '/node_modules')],
   },
 
   module: {
@@ -42,18 +44,18 @@ module.exports = {
         query: {
           presets: ['react-hmre'],
           plugins: [
-            ["inline-replace-variables", {
-              "__SERVER__": false
-            }]
-          ]
-        }
+            ['inline-replace-variables', {
+              __SERVER__: false,
+            }],
+          ],
+        },
       }, {
         test: /\.css$/,
-        loader: 'style!css!postcss'
+        loader: 'style!css!postcss',
       }, {
         test: /\.less$/,
         include: includes,
-        loader: 'style!css!less!postcss'
+        loader: 'style!css!less!postcss',
       },
       { test: /\.woff2?$/, loader: 'url?limit=10000&minetype=application/font-woff' },
       { test: /\.ttf$/, loader: 'url?limit=10000&minetype=application/octet-stream' },
@@ -61,20 +63,19 @@ module.exports = {
       { test: /\.svg$/, loader: 'url?limit=10000&minetype=image/svg+xml' },
       { test: /\.(png|jpg|jpeg|gif)$/i, loader: 'url?limit=10000&name=[name].[ext]' },
       { test: /\.json$/, loader: 'json' },
-      { test: /\.html?$/, loader: 'file?name=[name].[ext]' }
-    ]
+      { test: /\.html?$/, loader: 'file?name=[name].[ext]' },
+    ],
   },
 
   postcss: [
     rucksack(),
     autoprefixer({
-      browsers: ['last 2 versions', 'Firefox ESR', '> 1%', 'ie >= 8']
-    })
+      browsers: ['last 2 versions', 'Firefox ESR', '> 1%', 'ie >= 9'],
+    }),
   ],
   plugins: [
     new webpack.optimize.CommonsChunkPlugin('common', 'common.js'),
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin()
-  ]
-}
-
+    new webpack.HotModuleReplacementPlugin(),
+  ],
+};

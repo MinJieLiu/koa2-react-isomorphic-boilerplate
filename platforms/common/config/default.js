@@ -3,9 +3,9 @@
  * @Author Ling.
  * @Email i@zeroling.com
  */
-import path from 'path'
+import path from 'path';
 
-const rootPath = path.join(__dirname, '../../..')
+const rootPath = path.join(__dirname, '../../..');
 export default {
   rootPath,
   publicPath: '/public',
@@ -16,6 +16,6 @@ export default {
     username: '',
     password: '',
     database: 'main',
-    storage: 'path/to/db.sqlite'
-  }
-}
+    storage: 'path/to/db.sqlite',
+  },
+};

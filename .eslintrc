@@ -1,20 +1,19 @@
 {
   "parser": "babel-eslint",
-  "extends": "standard",
+  "extends": "airbnb",
   "env": {
     "node": true,
     "es6": true,
     "mocha": true
   },
-  "ecmaFeatures": {
-    "arrowFunctions": true,
-     "jsx": true
+  "globals": {
+    "describe": true,
+    "it": true,
+    "document": true
   },
   "rules": {
-    "func-style": [2, "declaration", { "allowArrowFunctions": true }],
-    "no-unused-vars": 0
-  },
-  "plugins": [
-    "react"
-  ]
+    "jsx-a11y/no-static-element-interactions": 0,
+    "react/forbid-prop-types": 0,
+    "import/no-extraneous-dependencies": 0
+  }
 }

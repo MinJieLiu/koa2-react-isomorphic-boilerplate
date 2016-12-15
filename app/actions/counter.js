@@ -3,36 +3,36 @@
  * @Author Ling.
  * @Email i@zeroling.com
  */
-export const INCREMENT_COUNTER = 'INCREMENT_COUNTER'
-export const DECREMENT_COUNTER = 'DECREMENT_COUNTER'
+export const INCREMENT_COUNTER = 'INCREMENT_COUNTER';
+export const DECREMENT_COUNTER = 'DECREMENT_COUNTER';
 
-export function increment () {
+export function increment() {
   return {
-    type: INCREMENT_COUNTER
-  }
+    type: INCREMENT_COUNTER,
+  };
 }
 
-export function decrement () {
+export function decrement() {
   return {
-    type: DECREMENT_COUNTER
-  }
+    type: DECREMENT_COUNTER,
+  };
 }
 
-export function incrementIfOdd () {
+export function incrementIfOdd() {
   return (dispatch, getState) => {
-    const { counter } = getState()
+    const { counter } = getState();
 
     if (counter % 2 === 0) {
-      return
+      return;
     }
-    dispatch(increment())
-  }
+    dispatch(increment());
+  };
 }
 
-export function incrementAsync () {
-  return dispatch => {
+export function incrementAsync() {
+  return (dispatch) => {
     setTimeout(() => {
-      dispatch(increment())
-    }, 1000)
-  }
+      dispatch(increment());
+    }, 1000);
+  };
 }
