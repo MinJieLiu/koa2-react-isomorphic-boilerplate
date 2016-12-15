@@ -9,12 +9,13 @@ import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import config from '../../common/config';
 import configureStore from '../../../app/store/configureStore';
+
 const store = configureStore();
 
-export default async (ctx, next, renderProps) => {
-  const route = renderProps.routes[renderProps.routes.length - 1];
+export default async(ctx, next, renderProps) => {
+  // const route = renderProps.routes[renderProps.routes.length - 1];
   let prefetchTasks = [];
-  for (const component of renderProps.components) {
+  renderProps.components.forEach((component) => {
     if (component && component.WrappedComponent && component.WrappedComponent.fetch) {
       const _tasks = component.WrappedComponent.fetch(store.getState(), store.dispatch);
       if (Array.isArray(_tasks)) {
@@ -23,15 +24,17 @@ export default async (ctx, next, renderProps) => {
         prefetchTasks.push(_tasks);
       }
     }
-  }
+  });
 
   await Promise.all(prefetchTasks);
   await ctx.render('index', {
     title: config.title,
     dev: ctx.app.env === 'development',
     reduxData: store.getState(),
-    app: renderToString(<Provider store={store}>
-      <RouterContext {...renderProps} />
-    </Provider>),
+    app: renderToString(
+      <Provider store={store}>
+        <RouterContext {...renderProps} />
+      </Provider>,
+    ),
   });
 };

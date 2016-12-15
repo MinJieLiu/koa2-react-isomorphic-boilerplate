@@ -3,7 +3,7 @@
  * @Author Ling.
  * @Email i@zeroling.com
  */
-import React, { Component, PropTypes } from 'react'
+import React, { Component, PropTypes } from 'react';
 
 export default class Counter extends Component {
   static propTypes = {
@@ -11,10 +11,10 @@ export default class Counter extends Component {
     incrementIfOdd: PropTypes.func.isRequired,
     incrementAsync: PropTypes.func.isRequired,
     decrement: PropTypes.func.isRequired,
-    counter: PropTypes.number.isRequired
+    counter: PropTypes.number.isRequired,
   }
   render() {
-    const { increment, incrementIfOdd, incrementAsync, decrement, counter } = this.props
+    const { increment, incrementIfOdd, incrementAsync, decrement, counter } = this.props;
 
     return (
       <p>
@@ -28,6 +28,6 @@ export default class Counter extends Component {
         {' '}
         <button onClick={incrementAsync}>Increment Async</button>
       </p>
-    )
+    );
   }
 }

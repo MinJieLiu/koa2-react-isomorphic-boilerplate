@@ -2,18 +2,22 @@
   "parser": "babel-eslint",
   "extends": "airbnb",
   "env": {
-    "node": true,
     "es6": true,
-    "mocha": true
+    "mocha": true,
+    "node": true
   },
   "globals": {
     "describe": true,
+    "document": true,
     "it": true,
-    "document": true
+    "window": true
   },
   "rules": {
+    "global-require": 0,
+    "import/no-extraneous-dependencies": 0,
     "jsx-a11y/no-static-element-interactions": 0,
-    "react/forbid-prop-types": 0,
-    "import/no-extraneous-dependencies": 0
+    "no-param-reassign": ["error", { "props": false }],
+    "no-underscore-dangle": 0,
+    "react/forbid-prop-types": 0
   }
 }

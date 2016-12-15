@@ -6,6 +6,7 @@
 import fs from 'fs';
 import lodash, { isPlainObject, defaultsDeep } from 'lodash';
 import defaultConfig from './default';
+
 const debug = require('debug')('config');
 
 const cfgs = [];

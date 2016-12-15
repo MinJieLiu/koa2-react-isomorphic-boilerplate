@@ -3,8 +3,7 @@
   "version": "0.2.2",
   "author": "wssgcg1213",
   "scripts": {
-    "lint": "eslint platforms app --fix",
-    "lint:fix": "npm run lint --fix",
+    "lint": "eslint platforms app --fix --ext .js,.jsx",
     "start": "node bin/development.js",
     "production": "node bin/production.js",
     "build": "npm run clean && webpack --config webpack.build.js",

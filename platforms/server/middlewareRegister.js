@@ -5,15 +5,16 @@ import logger from 'koa-logger';
 import koaStatic from 'koa-static-plus';
 import koaOnError from 'koa-onerror';
 import convert from 'koa-convert';
-import Bodyparser from 'koa-bodyparser';
+import BodyParser from 'koa-bodyparser';
 import router from './routes';
 import config from '../common/config';
-const bodyparser = Bodyparser();
+
+const bodyParser = BodyParser();
 const templatePath = path.join(__dirname, './templates');
 
 export default (app) => {
   // reg middlewares
-  app.use(convert(bodyparser));
+  app.use(convert(bodyParser));
   app.use(convert(json()));
   app.use(convert(logger()));
 

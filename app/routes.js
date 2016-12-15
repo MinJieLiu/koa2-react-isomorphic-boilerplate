@@ -1,8 +1,8 @@
+import React from 'react';
+import { Router, Route, browserHistory } from 'react-router';
 import App from './containers/App';
 import Picture from './components/Picture';
 import Counter from './containers/Counter';
-import { Router, Route, browserHistory } from 'react-router';
-import React from 'react';
 
 export default (
   <Router history={browserHistory}>
