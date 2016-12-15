@@ -6,11 +6,14 @@ import koaStatic from 'koa-static-plus';
 import koaOnError from 'koa-onerror';
 import convert from 'koa-convert';
 import BodyParser from 'koa-bodyparser';
+import debugFunc from 'debug';
 import router from './routes';
 import config from '../common/config';
 
 const bodyParser = BodyParser();
 const templatePath = path.join(__dirname, './templates');
+
+const debug = debugFunc('app:dev:middleware:reg');
 
 export default (app) => {
   // reg middlewares
@@ -31,12 +34,12 @@ export default (app) => {
   koaOnError(app, { template: `${templatePath}/500.ejs` });
 
   // logger
-  if (app.env === 'development') {
+  if (process.env.NODE_ENV === 'development') {
     app.use(async (ctx, next) => {
       const start = new Date();
       await next();
       const ms = new Date() - start;
-      console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
+      debug(`${ctx.method} ${ctx.url} - ${ms}ms`);
     });
   }
 

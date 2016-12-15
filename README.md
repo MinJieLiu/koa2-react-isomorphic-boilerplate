@@ -45,22 +45,22 @@ npm run production # or pm2 start
 ├── package.json
 ├── platforms
 │   ├── browser                 # 浏览器相关
-│   │   └── index.js            # 浏览器 APP 入口
+│   │   └── index.jsx            # 浏览器 APP 入口
 │   ├── common
 │   │   └── config              # 配置
 │   │       ├── default.js
-│   │       └── index.js
+│   │       └── index.jsx
 │   └── server                  # 服务端相关
 │       ├── controllers
 │       │   ├── indexCtrl.js
 │       │   ├── serverRenderCtrl.js
 │       │   └── usersCtrl.js
-│       ├── index.js            # 服务端入口
+│       ├── index.jsx            # 服务端入口
 │       ├── middlewareRegister.js
 │       ├── models
 │       ├── routes              # 服务端路由
 │       │   ├── api.js
-│       │   ├── index.js
+│       │   ├── index.jsx
 │       │   └── render.js
 │       ├── services
 │       └── templates           # 服务端模板

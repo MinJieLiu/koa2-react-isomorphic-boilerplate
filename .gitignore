@@ -39,7 +39,7 @@ node_modules
 .idea
 
 config/*
-!config/index.js
+!config/index.jsx
 !config/default.js
 
 dist

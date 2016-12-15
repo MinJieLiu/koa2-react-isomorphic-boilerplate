@@ -10,7 +10,7 @@ import middlewareRegister from '../platforms/server/middlewareRegister';
 import webpackConfig from '../config/webpack.development';
 import config from '../platforms/common/config';
 
-const debug = debugFunc('app:dev:server');
+const debug = debugFunc('app:bin:server');
 
 const app = new Koa();
 const devMiddleware = KWM.devMiddleware;
@@ -22,7 +22,7 @@ debug('Waiting for webpack ...');
 require('babel-core/register')({
   plugins: [
     ['babel-plugin-transform-require-ignore', {
-      extensions: ['.less', '.css'],
+      extensions: ['.scss', '.css'],
     }],
     ['inline-replace-variables', {
       __SERVER__: true,
@@ -54,9 +54,9 @@ const hotMiddlewareInstance = hotMiddleware(compiler, {
   heartbeat: 10 * 1000,
 });
 
-app.env = 'development';
 app.use(devMiddlewareInstance);
 app.use(hotMiddlewareInstance);
+
 middlewareRegister(app); // reg middleware
 // error logger
 app.on('error', (err) => {
