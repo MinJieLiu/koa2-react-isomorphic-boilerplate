@@ -7,7 +7,7 @@ import fs from 'fs';
 import lodash, { isPlainObject, defaultsDeep } from 'lodash';
 import defaultConfig from './default';
 
-const debug = require('debug')('config');
+const debug = require('debug')('app:config');
 
 const cfgs = [];
 fs.readdirSync(__dirname).map((filename) => {

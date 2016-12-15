@@ -5,7 +5,7 @@
   "scripts": {
     "lint": "eslint platforms app bin config --fix --ext .js,.jsx",
     "start": "better-npm-run start",
-    "prod": "node bin/production.js",
+    "prod": "better-npm-run prod",
     "build": "npm run clean && better-npm-run build",
     "clean": "rimraf public/build/ && rimraf dist/",
     "test": "mocha -u bdd --compilers js:babel-core/register"
@@ -19,7 +19,14 @@
       }
     },
     "build": {
-      "command": "webpack --config webpack.build.js",
+      "command": "webpack --config config/webpack.build.js",
+      "env": {
+        "NODE_ENV": "production",
+        "DEBUG": "app:*"
+      }
+    },
+    "prod": {
+      "command": "node bin/production.js",
       "env": {
         "NODE_ENV": "production",
         "DEBUG": "app:*"
